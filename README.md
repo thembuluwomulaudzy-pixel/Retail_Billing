@@ -129,3 +129,60 @@ stock_movements (id, branch_id, product_id, batch_id, location_type, movement_ty
    - **Store Manager**: `manager` (PIN: `2345`)
    - **Storekeeper**: `storekeeper` (PIN: `3456`)
    - **Cashier**: `cashier` (PIN: `4567`)
+
+---
+
+## ⚡ Hosting with Vercel (`*.vercel.app`)
+
+TC Limited is pre-configured for instant serverless deployment on Vercel using `vercel-php@0.7.2` (PHP 8.2 / 8.3) and cloud-hosted PostgreSQL (Neon / Supabase / Vercel Postgres).
+
+### 1. Cloud PostgreSQL (Free & Instant)
+Vercel is serverless and connects to cloud databases. You can create a free PostgreSQL instance in under 60 seconds with:
+- **[Neon.tech](https://neon.tech)** (Recommended - free serverless PostgreSQL, instant connection string)
+- **[Supabase.com](https://supabase.com)** (Free PostgreSQL)
+- **Vercel Postgres** (Available directly in the Vercel Storage dashboard)
+
+Copy your connection string:
+```text
+postgres://[user]:[password]@[host].neon.tech/[dbname]?sslmode=require
+```
+
+### 2. Deploy via GitHub (Recommended)
+1. Push your repository to GitHub:
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/Retail_Billing.git
+   git branch -M main
+   git push -u origin main
+   ```
+2. Go to **[vercel.com/new](https://vercel.com/new)**.
+3. Import your `Retail_Billing` repository.
+4. Under **Environment Variables**, add:
+   - **Name**: `POSTGRES_URL` (or `DATABASE_URL`)
+   - **Value**: Your cloud connection string from Neon or Supabase.
+5. Click **Deploy**.
+6. **Self-Healing Auto-Migration**: On first visit to your `https://your-project.vercel.app`, the system automatically detects a new database, creates all 24 schema tables, and populates all initial grocery products, batches, suppliers, and staff users!
+
+### 3. Deploy via Vercel CLI
+If you prefer deploying directly from your computer terminal:
+```bash
+npm install -g vercel
+vercel login
+vercel
+```
+When prompted:
+- Set up and deploy: **Y**
+- Which scope: *(select your account)*
+- Link to existing project: **N**
+- Project name: `tc-limited-grocery`
+- In which directory: `./`
+- Modify settings: **N**
+Add your database environment variable:
+```bash
+vercel env add POSTGRES_URL
+```
+Deploy to production:
+```bash
+vercel --prod
+```
+Your live URL will be generated: `https://tc-limited-grocery.vercel.app`!
+
