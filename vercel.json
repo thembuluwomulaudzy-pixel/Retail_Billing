@@ -1,30 +1,14 @@
 {
   "functions": {
-    "api/*.php": {
+    "api/index.php": {
       "runtime": "vercel-php@0.7.2",
-      "includeFiles": "{config/**,database/**,index.php,login.php,test_suite.php}"
+      "includeFiles": "{backend/**,config/**,database/**,index.php,login.php,test_suite.php}"
     }
   },
   "routes": [
     {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/login.php",
-      "dest": "/api/index.php"
-    },
-    {
-      "src": "/test_suite.php",
-      "dest": "/api/index.php"
-    },
-    {
-      "src": "/index.php",
-      "dest": "/api/index.php"
     },
     {
       "src": "/(.*)",

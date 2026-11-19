@@ -3,9 +3,9 @@
 // TC LIMITED - Purchasing, Replenishment & Supplier Management API
 // =====================================================================
 
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../config/firebase.php';
-require_once __DIR__ . '/../config/auth.php';
+require_once dirname(__DIR__, 2) . '/config/database.php';
+require_once dirname(__DIR__, 2) . '/config/firebase.php';
+require_once dirname(__DIR__, 2) . '/config/auth.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
