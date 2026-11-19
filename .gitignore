@@ -1,0 +1,8 @@
+.vercel
+scratch/
+sessions/
+powershell.cmd
+*.log
+.env
+.env.local
+.DS_Store
